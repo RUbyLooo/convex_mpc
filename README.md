@@ -7,7 +7,7 @@ https://blog.csdn.net/qq_53186375/article/details/136031876?fromshare=blogdetail
 # 你的工作空间
 
 ```
-➜  YOUR_WS
+YOUR_WS
 ├── build
 ├── devel
 └── src
