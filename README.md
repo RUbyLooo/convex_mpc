@@ -2,7 +2,28 @@
 
 https://blog.csdn.net/qq_53186375/article/details/136031876?fromshare=blogdetail&sharetype=blogdetail&sharerId=136031876&sharerefer=PC&sharesource=rozier&sharefrom=from_link
 
-！注意osqp与osqp-eigen版本依赖问题，建议直接按照网址终端的参考链接1安装
+！注意osqp与osqp-eigen版本依赖问题，建议直接按照网址中的参考链接1安装
+
+
+# 多台阶Gazebo环境加载
+终端1
+```
+roslaunch unitree_gazebo normal.launch rname:=a1 wname:=stairs_new
+```
+终端2
+```
+rosrun unitree_controller unitree_servo # let the robot stretch legs
+```
+终端3
+```
+rosrun unitree_controller unitree_move_kinetic # place the robot back to origin
+```
+终端4
+```
+roslaunch a1_cpp a1_ctrl.launch type:=gazebo solver_type:=mpc
+```
+终端5、6
+启动虚拟手柄控制运动
 
 # 虚拟手柄的使用
 终端1
@@ -50,4 +71,3 @@ ROS 话题通信流程：
 | **`w / x`** | 线性速度 | 仅增加 ($\text{w}$) 或减少 ($\text{x}$) **线性**最大速度限制 ($\text{10\%}$ 步长) |
 | **`e / c`** | 角速度 | 仅增加 ($\text{e}$) 或减少 ($\text{c}$) **角速度**最大限制 ($\text{10\%}$ 步长) |
 | **按住 $\text{Shift}$** | Holonomic 模式 | 启用横向平移（侧移，映射到 $\mathbf{linear.y}$），但 $\text{A1}$ 控制器可能不使用这个轴。 |
-
